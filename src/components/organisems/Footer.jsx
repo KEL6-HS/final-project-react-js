@@ -10,7 +10,7 @@ export default function Footer() {
               <div className="footer__about">
                 <div className="footer__logo">
                   <a href="#">
-                    <img src="img/footer-logo.png" alt />
+                    <img src="img/footer-logo.png" />
                   </a>
                 </div>
                 <p>
@@ -18,7 +18,7 @@ export default function Footer() {
                   which includes design.
                 </p>
                 <a href="#">
-                  <img src="img/payment.png" alt />
+                  <img src="img/payment.png" />
                 </a>
               </div>
             </div>

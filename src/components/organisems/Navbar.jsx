@@ -24,13 +24,13 @@ export default function Navbar() {
         </div>
         <div className="offcanvas__nav__option">
           <a href="#" className="search-switch">
-            <img src="img/icon/search.png" alt />
+            <img src="img/icon/search.png" />
           </a>
           <a href="#">
-            <img src="img/icon/heart.png" alt />
+            <img src="img/icon/heart.png" />
           </a>
           <a href="#">
-            <img src="img/icon/cart.png" alt /> <span>0</span>
+            <img src="img/icon/cart.png" /> <span>0</span>
           </a>
           <div className="price">$0.00</div>
         </div>
@@ -75,7 +75,7 @@ export default function Navbar() {
             <div className="sm:w-full lg:w-3/12 md:w-3/12">
               <div className="header__logo">
                 <a href="./index.html">
-                  <img src="img/logo.png" alt />
+                  <img src="img/logo.png" />
                 </a>
               </div>
             </div>
@@ -117,13 +117,13 @@ export default function Navbar() {
             <div className="sm:w-full lg:w-3/12 md:w-3/12">
               <div className="header__nav__option">
                 <a href="#" className="search-switch">
-                  <img src="img/icon/search.png" alt />
+                  <img src="img/icon/search.png" />
                 </a>
                 <a href="#">
-                  <img src="img/icon/heart.png" alt />
+                  <img src="img/icon/heart.png" />
                 </a>
                 <a href="#">
-                  <img src="img/icon/cart.png" alt /> <span>0</span>
+                  <img src="img/icon/cart.png" /> <span>0</span>
                 </a>
                 <div className="price">$0.00</div>
               </div>
