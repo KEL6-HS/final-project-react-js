@@ -8,7 +8,7 @@ export default function Navbar() {
       <div className="offcanvas-menu-wrapper">
         <div className="offcanvas__option">
           <div className="offcanvas__links">
-            <a href="#">Sign in</a>
+            <Link to="/sign_in">Sign In</Link>
             <a href="#">FAQs</a>
           </div>
           <div className="offcanvas__top__hover">
@@ -52,7 +52,7 @@ export default function Navbar() {
               <div className="lg:w-6/12 md:w-5/12">
                 <div className="header__top__right">
                   <div className="header__top__links">
-                    <a href="sign_in.html">Sign in</a>
+                    <Link to="/sign_in">Sign In</Link>
                     <a href="#">FAQs</a>
                   </div>
                   <div className="header__top__hover">
