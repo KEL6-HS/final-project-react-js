@@ -49,17 +49,19 @@ export default function SignIn() {
                 </a>
               </div>
 
-              <button
-                type="submit"
-                className="bg-[#0C1421] p-2 mt-8 hover:scale-105 duration-300"
+              <Link
+                className="bg-[#0C1421] font-semibold text-white text-center p-2 mt-8 hover:scale-105 duration-300 "
+                to="/"
               >
-                <Link className="font-semibold text-white" to="/">Sign In</Link>
-              </button>
+                Sign Up
+              </Link>
             </form>
             <div className="text-center pt-12 pb-12">
               <p>
                 Don't have an account?{" "}
-                    <Link className="underline font-semibold" to="/sign_up">Sign Up</Link>
+                <Link className="underline font-semibold" to="/sign_up">
+                  Sign Up
+                </Link>
               </p>
             </div>
           </div>

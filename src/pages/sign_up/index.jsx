@@ -20,7 +20,7 @@ export default function SignUp() {
 
         <div className="flex flex-col justify-center md:justify-start my-auto pt-8 md:pt-0 px-8 md:px-10 lg:px-14">
           <p className="text-center text-3xl font-semibold">Join Us</p>
-          <form id="signOutForm" className="flex flex-col pt-3 md:pt-4">
+          <form id="signOutForm" className="flex flex-col">
             <div className="pt-4">
               <label htmlFor="name" className="text-base font-medium">
                 Name
@@ -72,19 +72,19 @@ export default function SignUp() {
               />
             </div>
 
-            <button
-              type="submit"
-              className="bg-[#0C1421] font-semibold text-white p-2 mt-8 hover:scale-105 duration-300"
+            <Link
+              className="bg-[#0C1421] font-semibold text-white text-center p-2 mt-8 hover:scale-105 duration-300 "
+              to="/"
             >
-              <Link className="font-semibold text-white" to="/">Sign Up</Link>
-            </button>
+              Sign In
+            </Link>
           </form>
-          <div className="text-center pt-12 pb-12">
+          <div className="text-center pt-8">
             <p>
               Already have an account?{" "}
-              <a href="sign_in.html" className="underline font-semibold">
-                <Link to="/sign_in">Sign In</Link>
-              </a>
+              <Link className="underline font-semibold" to="/sign_in">
+                Sign In
+              </Link>
             </p>
           </div>
         </div>
