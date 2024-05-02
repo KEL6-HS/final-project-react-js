@@ -76,7 +76,7 @@ export default function SignUp() {
               className="bg-[#0C1421] font-semibold text-white text-center p-2 mt-8 hover:scale-105 duration-300 "
               to="/"
             >
-              Sign In
+              Sign Up
             </Link>
           </form>
           <div className="text-center pt-8">

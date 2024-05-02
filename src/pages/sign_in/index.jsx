@@ -53,7 +53,7 @@ export default function SignIn() {
                 className="bg-[#0C1421] font-semibold text-white text-center p-2 mt-8 hover:scale-105 duration-300 "
                 to="/"
               >
-                Sign Up
+                Sign In
               </Link>
             </form>
             <div className="text-center pt-12 pb-12">
