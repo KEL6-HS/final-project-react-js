@@ -8,8 +8,6 @@
 ---------------------------------------------------------  */
 
 const mainFunc = ($) => {
-	if ($.isMainScriptLoaded) return;
-
 	/*------------------
         Preloader
     --------------------*/
@@ -229,8 +227,6 @@ const mainFunc = ($) => {
 				}
 			);
 	});
-
-	$.isMainScriptLoaded = true;
 };
 
 export default mainFunc;
