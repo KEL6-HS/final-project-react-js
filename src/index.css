@@ -34,19 +34,21 @@
 /* Template default CSS
 /*----------------------------------------*/
 
-*, ::after, ::before {
-    box-sizing: border-box;
+*,
+::after,
+::before {
+	box-sizing: border-box;
 }
 
 a {
-    color: #007bff;
-    text-decoration: none;
-    background-color: transparent;
+	color: #007bff;
+	text-decoration: none;
+	background-color: transparent;
 }
 
 img {
-    vertical-align: middle;
-    border-style: none;
+	vertical-align: middle;
+	border-style: none;
 }
 
 html,
@@ -814,7 +816,9 @@ ol {
 	position: relative;
 }
 
-.categories__deal__countdown .categories__deal__countdown__timer .cd-item:after {
+.categories__deal__countdown
+	.categories__deal__countdown__timer
+	.cd-item:after {
 	position: absolute;
 	right: 0;
 	top: 7px;
@@ -824,7 +828,9 @@ ol {
 	color: #3d3d3d;
 }
 
-.categories__deal__countdown .categories__deal__countdown__timer .cd-item:last-child:after {
+.categories__deal__countdown
+	.categories__deal__countdown__timer
+	.cd-item:last-child:after {
 	display: none;
 }
 
@@ -1055,7 +1061,6 @@ ol {
 .product__item__text .rating i {
 	font-size: 14px;
 	color: #b7b7b7;
-	margin-right: -5px;
 }
 
 .product__item__text h5 {
@@ -1362,7 +1367,9 @@ ol {
 }
 
 .shop__sidebar__accordion .card-heading a:after,
-.shop__sidebar__accordion .card-heading>a.active[aria-expanded=false]:after {
+.shop__sidebar__accordion
+	.card-heading
+	> a.active[aria-expanded="false"]:after {
 	content: "";
 	font-family: "FontAwesome";
 	font-size: 24px;
@@ -2302,24 +2309,46 @@ ol {
 	width: 400px;
 }
 
-.shopping__cart__table table tbody tr td.product__cart__item .product__cart__item__pic {
+.shopping__cart__table
+	table
+	tbody
+	tr
+	td.product__cart__item
+	.product__cart__item__pic {
 	float: left;
 	margin-right: 30px;
 }
 
-.shopping__cart__table table tbody tr td.product__cart__item .product__cart__item__text {
+.shopping__cart__table
+	table
+	tbody
+	tr
+	td.product__cart__item
+	.product__cart__item__text {
 	overflow: hidden;
 	padding-top: 21px;
 }
 
-.shopping__cart__table table tbody tr td.product__cart__item .product__cart__item__text h6 {
+.shopping__cart__table
+	table
+	tbody
+	tr
+	td.product__cart__item
+	.product__cart__item__text
+	h6 {
 	color: #111111;
 	font-size: 15px;
 	font-weight: 600;
 	margin-bottom: 10px;
 }
 
-.shopping__cart__table table tbody tr td.product__cart__item .product__cart__item__text h5 {
+.shopping__cart__table
+	table
+	tbody
+	tr
+	td.product__cart__item
+	.product__cart__item__text
+	h5 {
 	color: #0d0d0d;
 	font-weight: 700;
 }
@@ -2332,7 +2361,14 @@ ol {
 	width: 80px;
 }
 
-.shopping__cart__table table tbody tr td.quantity__item .quantity .pro-qty-2 input {
+.shopping__cart__table
+	table
+	tbody
+	tr
+	td.quantity__item
+	.quantity
+	.pro-qty-2
+	input {
 	width: 50px;
 	border: none;
 	text-align: center;
@@ -2340,7 +2376,14 @@ ol {
 	font-size: 16px;
 }
 
-.shopping__cart__table table tbody tr td.quantity__item .quantity .pro-qty-2 .qtybtn {
+.shopping__cart__table
+	table
+	tbody
+	tr
+	td.quantity__item
+	.quantity
+	.pro-qty-2
+	.qtybtn {
 	font-size: 16px;
 	color: #888888;
 	width: 10px;
@@ -2573,11 +2616,11 @@ ol {
 	visibility: hidden;
 }
 
-.checkout__input__checkbox label input:checked~.checkmark {
+.checkout__input__checkbox label input:checked ~ .checkmark {
 	border-color: #e53637;
 }
 
-.checkout__input__checkbox label input:checked~.checkmark:after {
+.checkout__input__checkbox label input:checked ~ .checkmark:after {
 	opacity: 1;
 }
 
@@ -3571,7 +3614,12 @@ ol {
 	.shopping__cart__table {
 		overflow-y: auto;
 	}
-	.shopping__cart__table table tbody tr td.product__cart__item .product__cart__item__pic {
+	.shopping__cart__table
+		table
+		tbody
+		tr
+		td.product__cart__item
+		.product__cart__item__pic {
 		float: none;
 		margin-right: 0;
 	}
@@ -3677,13 +3725,11 @@ ol {
 }
 
 @media (min-width: 992px) {
-
 	.offset-lg-1 {
-		margin-left: 8.333333%
+		margin-left: 8.333333%;
 	}
 
 	.offset-lg-4 {
-		margin-left: 33.333333%
+		margin-left: 33.333333%;
 	}
-
 }
