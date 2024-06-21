@@ -6,7 +6,7 @@ export default function SignUp() {
 		<div className="w-full flex flex-wrap">
 			<div className="w-3/4">
 				<img
-					className="object-cover w-full h-screen hidden md:block"
+					className="object-fill w-full h-full hidden md:block"
 					src="img/coba.jpg"
 				/>
 			</div>
