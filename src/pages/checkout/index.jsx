@@ -1,8 +1,25 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import RootLayouts from "../../layouts/RootLayouts";
 import PageContent from "../../components/PageContent";
+import { getCart } from "../../api/cart";
 
 export default function checkout() {
+	const [carts, setCarts] = useState([]);
+	const [price, setPrice] = useState(0);
+
+	useEffect(() => {
+		getCart().then((res) => {
+			setCarts(res.data);
+
+			let fixPrice = 0;
+			res.data.map((r) => {
+				fixPrice += r.product_detail.price * r.quantity;
+			});
+
+			setPrice(fixPrice);
+		});
+	}, []);
+
 	return (
 		<RootLayouts>
 			<PageContent label="Check Out">
@@ -107,31 +124,28 @@ export default function checkout() {
 									<p className="font-semibold">Product</p>
 									<p className="font-semibold">Total</p>
 								</div>
-								<div className="flex justify-between">
-									<p className="text-gray-600">01. Vanilla salted caramel</p>
-									<p className="text-gray-600">$300.0</p>
-								</div>
-								<div className="flex justify-between">
-									<p className="text-gray-600">02. German chocolate</p>
-									<p className="text-gray-600">$170.0</p>
-								</div>
-								<div className="flex justify-between">
-									<p className="text-gray-600">03. Sweet autumn</p>
-									<p className="text-gray-600">$170.0</p>
-								</div>
-								<div className="flex justify-between">
-									<p className="text-gray-600">04. Cluten free mini dozen</p>
-									<p className="text-gray-600">$110.0</p>
-								</div>
+
+								{carts.map((cart) => {
+									return (
+										<div key={cart.cart_id} className="flex justify-between">
+											<p className="text-gray-600">
+												{cart.product_detail.name} ({cart.quantity})
+											</p>
+											<p className="text-gray-600">
+												${cart.product_detail.price * cart.quantity}
+											</p>
+										</div>
+									);
+								})}
 							</div>
 							<div className="py-2">
 								<div className="flex justify-between">
 									<p className="font-semibold">Subtotal</p>
-									<p className="font-semibold">$750.99</p>
+									<p className="font-semibold">${price}</p>
 								</div>
 								<div className="flex justify-between">
 									<p className="font-semibold">Total</p>
-									<p className="font-semibold">$750.99</p>
+									<p className="font-semibold">${price}</p>
 								</div>
 							</div>
 							<div className="flex items-center space-x-4 mt-4">

@@ -17,6 +17,7 @@ export default function Navbar() {
 	const handleLogout = () => {
 		// Hapus token dari localStorage
 		localStorage.removeItem("token");
+		localStorage.removeItem("user");
 		setIsAuthenticated(false);
 		navigate("/sign_in");
 	};
@@ -34,7 +35,9 @@ export default function Navbar() {
 				<div className="offcanvas__option">
 					<div className="offcanvas__links">
 						{isAuthenticated ? (
-							<a href="#" onClick={handleLogout}>Log Out</a>
+							<a href="#" onClick={handleLogout}>
+								Log Out
+							</a>
 						) : (
 							<Link to="/sign_in">Sign In</Link>
 						)}
@@ -82,7 +85,9 @@ export default function Navbar() {
 								<div className="header__top__right">
 									<div className="header__top__links">
 										{isAuthenticated ? (
-											<a href="#" onClick={handleLogout}>Log Out</a>
+											<a href="#" onClick={handleLogout}>
+												Log Out
+											</a>
 										) : (
 											<Link to="/sign_in">Sign In</Link>
 										)}

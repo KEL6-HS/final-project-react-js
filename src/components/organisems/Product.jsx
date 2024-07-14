@@ -1,7 +1,11 @@
 import React, { useEffect, useState } from "react";
 import { getProduct, getProductCategory } from "../../api/product";
+import { useNavigate } from "react-router-dom";
+import { addCart } from "../../api/cart";
 
 export default function Product({ showFilter = true }) {
+	const navigate = useNavigate();
+
 	const [categories, setCategories] = useState([]);
 	const [products, setProducts] = useState([]);
 
@@ -22,6 +26,18 @@ export default function Product({ showFilter = true }) {
 	const onFilterClick = function (el) {
 		$(".filter__controls li").removeClass("active");
 		$(el.target).addClass("active");
+	};
+
+	const onAddCartClick = (productId) => {
+		const token = localStorage.getItem("token");
+		if (!token) {
+			alert("Harap login terlebih dahulu");
+			navigate("/sign_in");
+		}
+
+		addCart(productId).then((res) => {
+			alert("Berhasil menambahkan ke cart");
+		});
 	};
 
 	return (
@@ -90,7 +106,11 @@ export default function Product({ showFilter = true }) {
 									</div>
 									<div className="product__item__text">
 										<h6>{product.name}</h6>
-										<a href="#" className="add-cart">
+										<a
+											href="javascript:;"
+											onClick={(event) => onAddCartClick(product.id)}
+											className="add-cart"
+										>
 											+ Add To Cart
 										</a>
 										<div className="rating">
