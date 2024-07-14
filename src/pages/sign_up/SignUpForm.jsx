@@ -14,6 +14,8 @@ function SignUpForm() {
     country: "",
     password: "",
   });
+  const [error, setError] = useState(""); // Added state for error message
+  const [loading, setLoading] = useState(false); // Added state for loading
 
   const navigate = useNavigate();
 
@@ -23,16 +25,21 @@ function SignUpForm() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    setLoading(true);
+    setError("");
     const response = await registerUser(formData);
+    setLoading(false);
     if (response.message === "User registered successfully!") {
+      localStorage.setItem("token", response.token); // Simpan token ke localStorage
       navigate("/");
     } else {
-      console.error("Registration failed:", response.error);
+      setError(response.error || "Registration failed. Please try again."); // Set error message if registration fails
     }
   };
 
   return (
     <form id="signUpForm" className="flex flex-col flex-wrap" onSubmit={handleSubmit}>
+      {error && <div className="text-red-500 mb-4">{error}</div>} {/* Display error message */}
       <div className="pt-2">
         <label htmlFor="firstName" className="text-sm xl: font-medium">
           First Name
@@ -44,7 +51,8 @@ function SignUpForm() {
           placeholder="John"
           value={formData.firstName}
           onChange={handleChange}
-          className="shadow border rounded w-full py-1 px-3 border-gray-300 text-gray-700 focus:ring-black-500 focus:border-black-500 dark:border-gray-600 dark:placeholder-gray-400 dark:focus:ring-black-500 dark:focus:border-black-500"
+          className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
+          required
         />
       </div>
 
@@ -59,7 +67,7 @@ function SignUpForm() {
           placeholder="Cena"
           value={formData.lastName}
           onChange={handleChange}
-          className="shadow border rounded w-full py-1 px-3 border-gray-300 text-gray-700 focus:ring-black-500 focus:border-black-500 dark:border-gray-600 dark:placeholder-gray-400 dark:focus:ring-black-500 dark:focus:border-black-500"
+          className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
         />
       </div>
 
@@ -74,7 +82,8 @@ function SignUpForm() {
           placeholder="example@email.com"
           value={formData.email}
           onChange={handleChange}
-          className="shadow border rounded w-full py-1 px-3 border-gray-300 text-gray-700 focus:ring-black-500 focus:border-black-500 dark:border-gray-600 dark:placeholder-gray-400 dark:focus:ring-black-500 dark:focus:border-black-500"
+          className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
+          required
         />
       </div>
 
@@ -89,7 +98,8 @@ function SignUpForm() {
           placeholder="123 Main St"
           value={formData.streetAddress}
           onChange={handleChange}
-          className="shadow border rounded w-full py-1 px-3 border-gray-300 text-gray-700 focus:ring-black-500 focus:border-black-500 dark:border-gray-600 dark:placeholder-gray-400 dark:focus:ring-black-500 dark:focus:border-black-500"
+          className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
+          required
         />
       </div>
 
@@ -105,7 +115,8 @@ function SignUpForm() {
             placeholder="New York"
             value={formData.city}
             onChange={handleChange}
-            className="shadow border rounded w-full py-1 px-3 border-gray-300 text-gray-700 focus:ring-black-500 focus:border-black-500 dark:border-gray-600 dark:placeholder-gray-400 dark:focus:ring-black-500 dark:focus:border-black-500"
+            className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
+            required
           />
         </div>
         <div className="flex flex-col w-1/2">
@@ -119,7 +130,8 @@ function SignUpForm() {
             placeholder="NY"
             value={formData.state}
             onChange={handleChange}
-            className="shadow border rounded w-full py-1 px-3 border-gray-300 text-gray-700 focus:ring-black-500 focus:border-black-500 dark:border-gray-600 dark:placeholder-gray-400 dark:focus:ring-black-500 dark:focus:border-black-500"
+            className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
+            required
           />
         </div>
       </div>
@@ -141,7 +153,7 @@ function SignUpForm() {
             placeholder="10001"
             value={formData.postalCode}
             onChange={handleChange}
-            className="shadow border rounded w-full py-1 px-3 border-gray-300 text-gray-700 focus:ring-black-500 focus:border-black-500 dark:border-gray-600 dark:placeholder-gray-400 dark:focus:ring-black-500 dark:focus:border-black-500"
+            className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
           />
 
           <input
@@ -151,7 +163,8 @@ function SignUpForm() {
             placeholder="USA"
             value={formData.country}
             onChange={handleChange}
-            className="shadow border rounded w-full py-1 px-3 border-gray-300 text-gray-700 focus:ring-black-500 focus:border-black-500 dark:border-gray-600 dark:placeholder-gray-400 dark:focus:ring-black-500 dark:focus:border-black-500"
+            className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
+            required
           />
         </div>
       </div>
@@ -167,12 +180,17 @@ function SignUpForm() {
           placeholder="At least 8 characters"
           value={formData.password}
           onChange={handleChange}
-          className="shadow border rounded w-full py-1 px-3 border-gray-300 text-gray-700 focus:ring-black-500 focus:border-black-500 dark:border-gray-600 dark:placeholder-gray-400 dark:focus:ring-black-500 dark:focus:border-black-500"
+          className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
+          required
         />
       </div>
 
-      <button type="submit" className="bg-[#0C1421] font-semibold text-white text-center p-2 mt-8 hover:scale-105 duration-300">
-        Sign Up
+      <button
+        type="submit"
+        className="bg-[#0C1421] font-semibold text-white text-center p-2 mt-8 hover:scale-105 duration-300"
+        disabled={loading}
+      >
+        {loading ? "Signing Up..." : "Sign Up"}
       </button>
     </form>
   );

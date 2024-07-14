@@ -1,13 +1,30 @@
-import React from "react";
-import { Link, useLocation } from "react-router-dom";
+import React, { useState, useEffect } from "react";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 
 export default function Navbar() {
 	const location = useLocation();
+	const navigate = useNavigate();
+	const [isAuthenticated, setIsAuthenticated] = useState(false);
+
+	useEffect(() => {
+		// Cek apakah token ada di localStorage
+		const token = localStorage.getItem("token");
+		if (token) {
+			setIsAuthenticated(true);
+		}
+	}, []);
+
+	const handleLogout = () => {
+		// Hapus token dari localStorage
+		localStorage.removeItem("token");
+		setIsAuthenticated(false);
+		navigate("/sign_in");
+	};
 
 	const isActive = (path) => {
 		if (Array.isArray(path)) {
-			return path.find((p) => p == location.pathname) ? "active" : "";
-		} else return location.pathname == path ? "active" : "";
+			return path.find((p) => p === location.pathname) ? "active" : "";
+		} else return location.pathname === path ? "active" : "";
 	};
 
 	return (
@@ -16,7 +33,11 @@ export default function Navbar() {
 			<div className="offcanvas-menu-wrapper">
 				<div className="offcanvas__option">
 					<div className="offcanvas__links">
-						<Link to="/sign_in">Sign In</Link>
+						{isAuthenticated ? (
+							<a href="#" onClick={handleLogout}>Log Out</a>
+						) : (
+							<Link to="/sign_in">Sign In</Link>
+						)}
 						<a href="#">FAQs</a>
 					</div>
 					<div className="offcanvas__top__hover">
@@ -60,7 +81,11 @@ export default function Navbar() {
 							<div className="lg:w-6/12 md:w-5/12">
 								<div className="header__top__right">
 									<div className="header__top__links">
-										<Link to="/sign_in">Sign In</Link>
+										{isAuthenticated ? (
+											<a href="#" onClick={handleLogout}>Log Out</a>
+										) : (
+											<Link to="/sign_in">Sign In</Link>
+										)}
 										<a href="#">FAQs</a>
 									</div>
 									<div className="header__top__hover">
