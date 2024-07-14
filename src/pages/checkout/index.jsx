@@ -5,22 +5,6 @@ import PageContent from "../../components/PageContent";
 export default function checkout() {
 	return (
 		<RootLayouts>
-			{/* <div className="mx-auto max-w-7xl flex items-center justify-between bg-stone-200 p-6 lg:px-8">
-        <div>
-          <h4>Check Out</h4>
-          <p className="mb-2">
-            <a href="#" className="text-blue-500">
-              Home
-            </a>{" "}
-            &gt;&nbsp;
-            <a href="#" className="text-blue-500">
-              Shop
-            </a>{" "}
-            &gt;&nbsp; Check Out
-          </p>
-        </div>
-      </div> */}
-
 			<PageContent label="Check Out">
 				<div className="container mx-auto mt-8 grid grid-cols-1 lg:grid-cols-3">
 					<div className="col-span-2 m-8">
