@@ -1,8 +1,38 @@
-import { Link } from "react-router-dom";
+import { useState } from "react";
+import { registerUser } from "../../api/auth";
+import { useNavigate } from "react-router-dom";
 
 function SignUpForm() {
+  const [formData, setFormData] = useState({
+    firstName: "",
+    lastName: "",
+    email: "",
+    streetAddress: "",
+    city: "",
+    state: "",
+    postalCode: "",
+    country: "",
+    password: "",
+  });
+
+  const navigate = useNavigate();
+
+  const handleChange = (e) => {
+    setFormData({ ...formData, [e.target.name]: e.target.value });
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    const response = await registerUser(formData);
+    if (response.message === "User registered successfully!") {
+      navigate("/");
+    } else {
+      console.error("Registration failed:", response.error);
+    }
+  };
+
   return (
-    <form id="signUpForm" className="flex flex-col flex-wrap">
+    <form id="signUpForm" className="flex flex-col flex-wrap" onSubmit={handleSubmit}>
       <div className="pt-2">
         <label htmlFor="firstName" className="text-sm xl: font-medium">
           First Name
@@ -12,6 +42,8 @@ function SignUpForm() {
           id="firstName"
           name="firstName"
           placeholder="John"
+          value={formData.firstName}
+          onChange={handleChange}
           className="shadow border rounded w-full py-1 px-3 border-gray-300 text-gray-700 focus:ring-black-500 focus:border-black-500 dark:border-gray-600 dark:placeholder-gray-400 dark:focus:ring-black-500 dark:focus:border-black-500"
         />
       </div>
@@ -25,6 +57,8 @@ function SignUpForm() {
           id="lastName"
           name="lastName"
           placeholder="Cena"
+          value={formData.lastName}
+          onChange={handleChange}
           className="shadow border rounded w-full py-1 px-3 border-gray-300 text-gray-700 focus:ring-black-500 focus:border-black-500 dark:border-gray-600 dark:placeholder-gray-400 dark:focus:ring-black-500 dark:focus:border-black-500"
         />
       </div>
@@ -38,6 +72,8 @@ function SignUpForm() {
           id="email"
           name="email"
           placeholder="example@email.com"
+          value={formData.email}
+          onChange={handleChange}
           className="shadow border rounded w-full py-1 px-3 border-gray-300 text-gray-700 focus:ring-black-500 focus:border-black-500 dark:border-gray-600 dark:placeholder-gray-400 dark:focus:ring-black-500 dark:focus:border-black-500"
         />
       </div>
@@ -51,6 +87,8 @@ function SignUpForm() {
           id="streetAddress"
           name="streetAddress"
           placeholder="123 Main St"
+          value={formData.streetAddress}
+          onChange={handleChange}
           className="shadow border rounded w-full py-1 px-3 border-gray-300 text-gray-700 focus:ring-black-500 focus:border-black-500 dark:border-gray-600 dark:placeholder-gray-400 dark:focus:ring-black-500 dark:focus:border-black-500"
         />
       </div>
@@ -65,6 +103,8 @@ function SignUpForm() {
             id="city"
             name="city"
             placeholder="New York"
+            value={formData.city}
+            onChange={handleChange}
             className="shadow border rounded w-full py-1 px-3 border-gray-300 text-gray-700 focus:ring-black-500 focus:border-black-500 dark:border-gray-600 dark:placeholder-gray-400 dark:focus:ring-black-500 dark:focus:border-black-500"
           />
         </div>
@@ -77,6 +117,8 @@ function SignUpForm() {
             id="state"
             name="state"
             placeholder="NY"
+            value={formData.state}
+            onChange={handleChange}
             className="shadow border rounded w-full py-1 px-3 border-gray-300 text-gray-700 focus:ring-black-500 focus:border-black-500 dark:border-gray-600 dark:placeholder-gray-400 dark:focus:ring-black-500 dark:focus:border-black-500"
           />
         </div>
@@ -97,6 +139,8 @@ function SignUpForm() {
             id="postalCode"
             name="postalCode"
             placeholder="10001"
+            value={formData.postalCode}
+            onChange={handleChange}
             className="shadow border rounded w-full py-1 px-3 border-gray-300 text-gray-700 focus:ring-black-500 focus:border-black-500 dark:border-gray-600 dark:placeholder-gray-400 dark:focus:ring-black-500 dark:focus:border-black-500"
           />
 
@@ -105,6 +149,8 @@ function SignUpForm() {
             id="country"
             name="country"
             placeholder="USA"
+            value={formData.country}
+            onChange={handleChange}
             className="shadow border rounded w-full py-1 px-3 border-gray-300 text-gray-700 focus:ring-black-500 focus:border-black-500 dark:border-gray-600 dark:placeholder-gray-400 dark:focus:ring-black-500 dark:focus:border-black-500"
           />
         </div>
@@ -119,16 +165,15 @@ function SignUpForm() {
           id="password"
           name="password"
           placeholder="At least 8 characters"
+          value={formData.password}
+          onChange={handleChange}
           className="shadow border rounded w-full py-1 px-3 border-gray-300 text-gray-700 focus:ring-black-500 focus:border-black-500 dark:border-gray-600 dark:placeholder-gray-400 dark:focus:ring-black-500 dark:focus:border-black-500"
         />
       </div>
 
-      <Link
-        className="bg-[#0C1421] font-semibold text-white text-center p-2 mt-8 hover:scale-105 duration-300 "
-        to="/"
-      >
+      <button type="submit" className="bg-[#0C1421] font-semibold text-white text-center p-2 mt-8 hover:scale-105 duration-300">
         Sign Up
-      </Link>
+      </button>
     </form>
   );
 }
