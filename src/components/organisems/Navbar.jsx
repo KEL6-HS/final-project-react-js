@@ -146,6 +146,9 @@ export default function Navbar() {
 												<Link to="/shopping-cart">Shopping Cart</Link>
 											</li>
 											<li>
+												<Link to="/order-history">Order History</Link>
+											</li>
+											<li>
 												<Link to="/checkout">Check Out</Link>
 											</li>
 										</ul>
