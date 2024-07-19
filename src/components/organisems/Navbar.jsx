@@ -112,9 +112,9 @@ export default function Navbar() {
 					<div className="flex flex-wrap">
 						<div className="sm:w-full lg:w-3/12 md:w-3/12">
 							<div className="header__logo">
-								<a href="./index.html">
+								<Link to="/">
 									<img src="img/logo.png" />
-								</a>
+								</Link>
 							</div>
 						</div>
 						<div className="sm:w-full md:w-6/12 lg:w-6/12">
