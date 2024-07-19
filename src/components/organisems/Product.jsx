@@ -107,7 +107,7 @@ export default function Product({ showFilter = true }) {
 									<div className="product__item__text">
 										<h6>{product.name}</h6>
 										<a
-											href="javascript:;"
+											href="#"
 											onClick={(event) => onAddCartClick(product.id)}
 											className="add-cart"
 										>

@@ -13,7 +13,7 @@ export default function PageContent({ children, label }) {
 						<div className="lg:w-full">
 							<div className="breadcrumb__text">
 								<h4>{label}</h4>
-								<div class="breadcrumb__links">
+								<div className="breadcrumb__links">
 									<a onClick={() => navigate("/")}>Home</a>
 									<span>{label}</span>
 								</div>

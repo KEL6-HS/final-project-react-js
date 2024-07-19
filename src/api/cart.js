@@ -35,3 +35,17 @@ export async function getCart() {
 
 	return response.json();
 }
+
+export async function getOrderHistory() {
+	const auth = useAuthStore();
+
+	const response = await fetch("http://localhost:3000/order/history", {
+		method: "GET",
+		headers: {
+			"Content-Type": "application/json",
+			Authorization: localStorage.getItem("token"),
+		},
+	});
+
+	return response.json();
+}
